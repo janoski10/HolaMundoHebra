@@ -21,6 +21,13 @@ namespace HolaMundoHebra
             Thread.Sleep(i * 1000);
             Console.WriteLine("Hola desde {0}", i);
         }
+
+        static void ejecutarConParametro(object o)
+        {
+            int i = (int)o;
+            Thread.Sleep(i * 1000);
+            Console.WriteLine("Hola desde {0}", i);
+        }
         static void Main(string[] args)
         {
             /*Console.WriteLine("Esto esta antes de la hebra");
@@ -33,7 +40,12 @@ namespace HolaMundoHebra
             Console.WriteLine("Iniciando Hebras");
             for (int i= 1; i<7; i++)
             {
-                Thread t = new Thread(new ThreadStart(ejecutar));
+                /*Thread t = new Thread(new ThreadStart(ejecutar));
+                t.Name = i.ToString();
+                t.IsBackground = false;
+                t.Start();*/
+
+                Thread t = new Thread(new ParameterizedThreadStart(ejecutarConParametro));
                 t.Name = i.ToString();
                 t.IsBackground = false;
                 t.Start();
