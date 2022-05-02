@@ -48,7 +48,7 @@ namespace HolaMundoHebra
                 Thread t = new Thread(new ParameterizedThreadStart(ejecutarConParametro));
                 t.Name = i.ToString();
                 t.IsBackground = false;
-                t.Start();
+                t.Start(i);
             }
 
             Console.WriteLine("Hebras iniciadas");
